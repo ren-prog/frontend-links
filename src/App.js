@@ -1,7 +1,7 @@
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
 import Home from "./pages/Home";
-import SingIn from "./pages/Singin";
+import SignIn from "./pages/SignIn";
 import SingUp from "./pages/SingUp";
 import Links from "./pages/Manage/Links";
 import LinksCreate from "./pages/Manage/Links/Create";
@@ -35,7 +35,7 @@ function App() {
         </nav>
         <Switch>
           <Route path="/sing-in">
-            <SingIn />
+            <SignIn />
           </Route>
           <Route path="/sing-up">
             <SingUp />
