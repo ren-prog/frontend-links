@@ -1,22 +1,40 @@
 import { Link } from "react-router-dom";
 
-const SingUp = () => {
+import { connect } from "react-redux";
+import { actionSignUp } from "./SignUpActions";
+
+const SingUp = (props) => {
+  const { actionSignIn } = props;
+
+  const submitHandle = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData);
+
+    console.log("*** Sign-up submitHandle.data", data);
+    actionSignUp(data);
+  };
   return (
     <div className="container h-100 pt-5">
       <h1>Sing Up</h1>
       <div className="d-flex flex-column h-100">
-        <form action="">
+        <form onSubmit={submitHandle}>
           <div className="form-group">
             <label htmlFor="">Email</label>
-            <input type="text" className="form-control" />
+            <input type="text" className="form-control" name="email" />
           </div>
           <div className="form-group">
             <label htmlFor="">Password</label>
-            <input type="password" className="form-control" />
+            <input type="password" className="form-control" name="password" />
           </div>
           <div className="form-group">
             <label htmlFor="">Password Confirmation</label>
-            <input type="password" className="form-control" />
+            <input
+              type="password"
+              className="form-control"
+              name="password_confirmation"
+            />
           </div>
           <div>
             <button className="btn btn-primary btn-round">Cadastrar</button>
@@ -31,4 +49,7 @@ const SingUp = () => {
   );
 };
 
-export default SingUp;
+const mapStateToProps = (state) => {
+  return { account: state.actionSignUp.account };
+};
+export default connect(mapStateToProps, { actionSignUp })(SingUp);
