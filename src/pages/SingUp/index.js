@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { actionSignUp } from "./SignUpActions";
 
 const SingUp = (props) => {
-  const { actionSignIn } = props;
+  const { actionSignUp, account } = props;
 
   const submitHandle = (e) => {
     e.preventDefault();
@@ -15,6 +15,10 @@ const SingUp = (props) => {
     console.log("*** Sign-up submitHandle.data", data);
     actionSignUp(data);
   };
+
+  if (account) {
+    return <Redirect to="/manage/links" />;
+  }
   return (
     <div className="container h-100 pt-5">
       <h1>Sing Up</h1>
