@@ -2,7 +2,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import { actionSignIn } from "./SigninActions";
+import { actionSignIn } from "../../actions/AccountActions";
 
 const Singin = (props) => {
   const { actionSignIn, account } = props;
@@ -48,6 +48,6 @@ const Singin = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  return { account: state.actionSignIn.account };
+  return { account: state.account.account };
 };
 export default connect(mapStateToProps, { actionSignIn })(Singin);

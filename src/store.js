@@ -2,12 +2,10 @@ import { createStore, applyMiddleware, combineReducers } from "redux";
 
 import ReduxPromise from "redux-promise";
 
-import SigninReducer from "./pages/SignIn/SigninReducer";
-import SignUpReducer from "./pages/SingUp/SignUpReducer";
+import accountReducer from "./reducers/AccountReducer";
 
 const reducers = combineReducers({
-  actionSignIn: SigninReducer,
-  actionSignUp: SignUpReducer,
+  account: accountReducer,
 });
 
 const store = createStore(reducers, applyMiddleware(ReduxPromise));
